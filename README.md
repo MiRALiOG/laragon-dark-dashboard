@@ -1,16 +1,18 @@
-# 🚀 Laragon Dashboard — RTL & Dark Mode
+# 🚀 Laragon Dashboard — RTL, Dark/Light & Bilingual
 
-جایگزینی برای صفحه‌ی پیش‌فرض Laragon؛ یک داشبورد فارسی، راست‌چین و تمام دارک که پوشه‌های پروژه رو خودکار شناسایی می‌کنه و نوع فریم‌ورک هر کدوم رو نشون می‌ده.
+جایگزینی برای صفحه‌ی پیش‌فرض Laragon؛ یک داشبورد دوزبانه (فارسی/انگلیسی) و راست‌چین که پوشه‌های پروژه رو خودکار شناسایی می‌کنه، نوع فریم‌ورک هر کدوم رو نشون می‌ده و بین تم لایت و دارک سوییچ می‌کنه.
 
-![preview](./screenshot.png)
+[![preview](https://github.com/MiRALiOG/laragon-dark-dashboard/raw/main/screenshot.png)](/MiRALiOG/laragon-dark-dashboard/blob/main/screenshot.png)
+
 ## ✨ ویژگی‌ها
 
-- راست‌چین کامل (`dir="rtl"`) با فونت Vazirmatn، مناسب کاربران فارسی‌زبان
-- تم دارک ثابت با پالت بنفش-آبی تیره، بدون نیاز به تنظیم اضافه
+- راست‌چین کامل (`dir="rtl"`) با فونت Vazirmatn برای فارسی و Inter برای انگلیسی
+- دوزبانه: یک دکمه برای سوییچ بین فارسی و انگلیسی، بدون رفرش صفحه
+- تاگل تم لایت/دارک، با ذخیره‌ی انتخاب کاربر (زبان و تم هر دو با `localStorage` به خاطر سپرده می‌شن)
 - اسکن خودکار پوشه‌های داخل `www` و نمایش به‌صورت کارت
 - تشخیص نوع پروژه از روی فایل‌های مشخصه (Laravel، WordPress، Symfony، Angular، Next.js، Vite، Node.js، Composer)
 - جستجوی زنده‌ی پروژه‌ها بدون رفرش صفحه
-- لینک مستقیم برای باز کردن هر پروژه در VS Code
+- دکمه‌ی مستقیم برای مشاهده‌ی این پروژه روی گیت‌هاب
 - دسترسی به `phpinfo()` فقط از طریق localhost (برای جلوگیری از افشای اطلاعات حساس)
 - دسترسی سریع به phpMyAdmin
 
@@ -30,7 +32,8 @@
 
 - **پوشه‌های مخفی:** آرایه‌ی `$hiddenFolders` توی تابع `getProjectFolders()` رو ویرایش کن تا پوشه‌های دلخواهت از لیست کنار گذاشته بشن.
 - **تشخیص نوع پروژه:** آرایه‌ی `$checks` توی تابع `detectProjectType()` رو می‌تونی گسترش بدی تا فریم‌ورک‌های بیشتری شناسایی بشن.
-- **رنگ‌بندی:** متغیرهای رنگ توی بخش `<style>` (مثل `#7c3aed`، `#0d0f17`) رو برای تغییر تم تغییر بده.
+- **رنگ‌بندی:** رنگ‌های هر دو تم (لایت و دارک) به‌صورت CSS Variable توی بخش `:root` و `body.light` تعریف شدن؛ همون متغیرها رو تغییر بده تا کل پالت رنگی عوض بشه.
+- **زبان پیش‌فرض:** اگه می‌خوای پیش‌فرض صفحه انگلیسی باز بشه، مقدار اولیه‌ی `savedLang` توی اسکریپت پایین صفحه رو از `'fa'` به `'en'` تغییر بده.
 
 ## 🤝 مشارکت
 
@@ -42,18 +45,19 @@
 
 ---
 
-# 🚀 Laragon Dashboard — RTL & Dark Mode (English)
+# 🚀 Laragon Dashboard — RTL, Dark/Light & Bilingual (English)
 
-A drop-in replacement for Laragon's default landing page: a Persian, right-to-left, permanently dark dashboard that auto-detects your local project folders and identifies each project's framework.
+A drop-in replacement for Laragon's default landing page: a bilingual (Persian/English), right-to-left dashboard that auto-detects your local project folders, identifies each project's framework, and switches between light and dark themes.
 
 ## ✨ Features
 
-- Full RTL layout (`dir="rtl"`) with the Vazirmatn font, built for Persian-speaking users
-- Fixed dark theme with a purple/indigo palette — no toggle, no setup
+- Full RTL layout (`dir="rtl"`) with the Vazirmatn font for Persian and Inter for English
+- Bilingual: one button switches between Persian and English instantly, no page reload
+- Light/dark theme toggle, with the user's choice remembered (both language and theme are saved via `localStorage`)
 - Automatic scan of folders inside `www`, rendered as cards
 - Project type detection from marker files (Laravel, WordPress, Symfony, Angular, Next.js, Vite, Node.js, Composer)
 - Live search filter, no page reload
-- One-click "open in VS Code" link per project
+- A direct button to view this project on GitHub
 - `phpinfo()` is restricted to localhost requests only, to avoid leaking sensitive server info
 - Quick access to phpMyAdmin
 
@@ -73,7 +77,8 @@ The `?q=info` route (which exposes `phpinfo()`) only works when requested from `
 
 - **Hidden folders:** edit the `$hiddenFolders` array inside `getProjectFolders()` to exclude folders you don't want listed.
 - **Project detection:** extend the `$checks` array inside `detectProjectType()` to recognize more frameworks.
-- **Colors:** the theme variables live in the `<style>` block (e.g. `#7c3aed`, `#0d0f17`) — tweak them to restyle the dashboard.
+- **Colors:** both theme palettes are defined as CSS variables under `:root` and `body.light` — change those variables to restyle the whole dashboard.
+- **Default language:** to open the page in English by default, change the initial `savedLang` value in the script at the bottom of the page from `'fa'` to `'en'`.
 
 ## 🤝 Contributing
 
